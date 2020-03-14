@@ -12,7 +12,7 @@ GNU General Public License version 3
 
 # Introduction:
 
- This project will atempt to give an analisis of __something something__ from Spotify using a python library that implements the [Spotify API](https://developer.spotify.com/documentation/web-api/) called [Spotipy](https://github.com/plamere/spotipy).
+ This project will atempt to give an analisis of songs from Spotify using a python library that implements the [Spotify API](https://developer.spotify.com/documentation/web-api/) called [Spotipy](https://github.com/plamere/spotipy). Using this information we will try to build a playlist of the trends per country per day.
 
 
  # Results:
