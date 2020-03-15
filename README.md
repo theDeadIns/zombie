@@ -16,7 +16,7 @@ GNU General Public License version 3
 
 
 # Implementation:
-The implementation can be founded in the spotify.py file above
+The implementation can be founded in the [spotify.py](https://github.com/theDeadIns/zombie/blob/master/spotify.py) file above
 
 
  # Results:
