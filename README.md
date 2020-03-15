@@ -10,9 +10,16 @@ GNU General Public License version 3
  # Instructions
 1. First, you need to [install the spoitpy library](https://github.com/plamere/spotipy)
 
+> 1.1 You can do this by simply running `pip install spotipy`
+
 2. Then, you need to get the credential for your account
 
-> 2.1
+> 2.1 Go to the dashboard in the [spotify developer page](https://developer.spotify.com/dashboard/)
+
+> 2.2 Log in with your spotify account.
+
+> 2.3 Create a new app. If you don't know yet for what purpose you want for your app, tick the "I don't know" option. Give it a title and a description and tick all the boxes in the next page.
+![creation of the app]()
 
 3. You can now run the script
 
