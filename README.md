@@ -19,7 +19,7 @@ GNU General Public License version 3
 > 2.2 Log in with your spotify account.
 
 > 2.3 Create a new app. If you don't know yet for what purpose you want for your app, tick the "I don't know" option. Give it a title and a description and tick all the boxes in the next page.
-![creation of the app]()
+![creation of the app](https://github.com/theDeadIns/zombie/blob/master/resources/App%20creation.png)
 
 3. You can now run the script
 
