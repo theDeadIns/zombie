@@ -18,7 +18,14 @@ GNU General Public License version 3
 # Implementation:
 The implementation can be founded in the [spotify.py](https://github.com/theDeadIns/zombie/blob/master/spotify.py) file above
 
+ # Testing Results:
 
- # Results:
+ So far, we have managed to obtain as many as 20 songs per execution in json format however, we still need to determine the frecuency in witch we are going to be running the scrpit, given that the trends do not change that frecuently (we are still testing this).
 
- So far, we have managed to obtain as many as 20 songs per minute in json format however, we still need to determine the frecuency in witch we are going to be running the scrpit, given that the trends do not change that frecuently (we are still testing this).
+ # Resources:
+## Data stream:
+- Spotify
+## Data processing:
+- Python
+
+# Instructions
