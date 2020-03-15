@@ -10,7 +10,9 @@ GNU General Public License version 3
  # Instructions
 1. First, you need to [install the spoitpy library](https://github.com/plamere/spotipy)
 
-2. Then, you need the credentials for an aplication (planning to add per user login)
+2. Then, you need to get the credential for your account
+
+> 2.1
 
 3. You can now run the script
 
