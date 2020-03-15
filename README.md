@@ -12,7 +12,12 @@ GNU General Public License version 3
 
  This project will atempt to give an analisis of songs from Spotify using a  library that implements the [Spotify API](https://developer.spotify.com/documentation/web-api/) into python called [Spotipy](https://github.com/plamere/spotipy). Using this information, we will try to build a playlist of the trends per country per day and then try to implement other features.
 
+# Instructions
+1. First, you need to [install the spoitpy library](https://github.com/plamere/spotipy)
 
+2. Then, you need the credentials for an aplication (planning to add per user login)
+
+3. You can now run the script
 
 # Implementation:
 The implementation can be founded in the [spotify.py](https://github.com/theDeadIns/zombie/blob/master/spotify.py) file above
@@ -26,10 +31,3 @@ The implementation can be founded in the [spotify.py](https://github.com/theDead
 - Spotify
 ## Data processing:
 - Python
-
-# Instructions
-1. First, you need to [install the spoitpy library](https://github.com/plamere/spotipy)
-
-2. Then, you need the credentials for an aplication (planning to add per user login)
-
-3. You can now run the script
