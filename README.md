@@ -18,8 +18,11 @@ GNU General Public License version 3
 
 > 2.2 Log in with your spotify account.
 
-> 2.3 Create a new app. If you don't know yet for what purpose you want for your app, tick the "I don't know" option. Give it a title and a description and tick all the boxes in the next page.
+> 2.3 Create a new app by clicking "My New App". If you don't know yet for what purpose you want for your app, tick the "I don't know" option. Give it a title and a description and tick all the boxes in the next page.
 ![creation of the app](https://github.com/theDeadIns/zombie/blob/master/resources/App%20creation.png)
+
+> 2.4 On the left side you can find your "Client ID" and your "Client Secret". Sometimes the "spotipy" script requiers a redirect page. For that, go to "Edit Settings" and set "https://www.google.com/" (or any other generic and stable page) as your Redirect URI.
+![Credentials](https://github.com/theDeadIns/zombie/blob/master/resources/Credentials.png)
 
 3. You can now run the script
 
