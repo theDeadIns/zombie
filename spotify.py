@@ -1,24 +1,32 @@
-# -*- coding: utf-8 -*-
 import credentials
-import json
-import os
-import sys
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
+import os
+import json
+import datetime
 
 
+client_credentials_manager = SpotifyClientCredentials()
+sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
-lz_uri = 'spotify:artist:36QJpDe2go2KgaRleHCDTp'
+with open("playlis_ids.json") as ids:
+    playlist_ids = json.load(ids)
 
-spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
-results = spotify.artist_top_tracks(lz_uri)
-
-for track in results['tracks'][:10]:
-    print('track    : ' + track['name'])
-    print('audio    : ' + track['preview_url'])
-    print('cover art: ' + track['album']['images'][0]['url'])
-    print(spotify.audio_analysis(track['id']))
-    print()
-
-
-# print(spotify.new_releases(limit = 5))
+for playlist_id in playlist_ids:
+    playlist = sp.playlist(playlist_id)
+    playlist_name = playlist['name']
+    tracks = sp.playlist_tracks(playlist_id)
+    tracks = tracks['items']
+    fecha = str(datetime.datetime.now().date())
+    play_dict = {"playlist_name": playlist_name, "playlist_id": playlist_id, "tracks": tracks, "date": fecha}
+    # for i,j in enumerate(play_dict['tracks']):
+    #     print (f" {i} {j['track']['name']} {j['track']['id']}")
+    try:
+        path = os.path.join(f"Playlist_json_{fecha}\\")
+        with open(f"{path}{play_dict['playlist_name']}_{fecha}_tracks.json", "w+") as json_file:
+            json.dump(play_dict, json_file)
+    except FileNotFoundError:
+        os.mkdir(f"Playlist_json_{fecha}")
+        path = os.path.join("Playlist_json\\")
+        with open(f"{path}{play_dict['playlist_name']}_tracks.json", "w+") as json_file:
+            json.dump(play_dict, json_file)
