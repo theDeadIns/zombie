@@ -44,3 +44,9 @@ The implementation can be found in the [spotify.py](https://github.com/theDeadIn
 - Spotify
 ## Data processing:
 - Python
+- Pandas
+- Bokeh
+
+## Data storage:
+- json files
+- MySQL
