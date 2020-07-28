@@ -5,7 +5,8 @@ import json
 import os
 
 
-
+# config = {"user": "user", "password": "12345678", "host": "127.0.0.1", "database": "test", "raise_on_warnings": True}
+config = {"user": "usario", "password": "12345", "host": "127.0.0.1", "database": "test", "raise_on_warnings": True}
 def write_config(config):
   with open("config.json", "w+") as json_wirte:
     json.dumps(config, json_wirte)

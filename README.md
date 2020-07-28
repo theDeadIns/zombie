@@ -7,39 +7,93 @@
 ## License:
 GNU General Public License version 3
 
- # Instructions
-1. First, you need to [install the spoitpy library](https://github.com/plamere/spotipy)
+# Instructions
+1. First, you need to install the following libraries:
+    * [Spoitpy library](https://github.com/plamere/spotipy)
 
-> 1.1 You can do this by simply running `pip install spotipy`
+        You can do this by simply running `pip install spotipy`
+    * [Bokeh](https://docs.bokeh.org/en/latest/docs/installation.html)
+        
+        Again, you can do it with `pip install bokeh`
 
-2. Then, you need to get the credential for your account
+    * [Pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html)
 
-> 2.1 Go to the dashboard in the [spotify developer page](https://developer.spotify.com/dashboard/)
+        Like the ones above, it can be installed with `pip install pandas`
 
-> 2.2 Log in with your spotify account.
+    * [MySQL Connector](https://dev.mysql.com/doc/connector-python/en/connector-python-installation.html)
 
-> 2.3 Create a new app by clicking "My New App". If you don't know yet for what purpose you want for your app, tick the "I don't know" option. Give it a title and a description and tick all the boxes in the next page.
-![creation of the app](https://github.com/theDeadIns/zombie/blob/master/resources/App%20creation.png)
+    For all this libraries, we recommend to follow the instructions provided and to check the libraries you have installed. To do this, you can do it with `pip list` or `python -m pip list` 
 
-> 2.4 On the left side you can find your "Client ID" and your "Client Secret". Sometimes the "spotipy" script requiers a redirect page. For that, go to "Edit Settings" and set "https://www.google.com/" (or any other generic and stable page) as your Redirect URI.
-![Credentials](https://github.com/theDeadIns/zombie/blob/master/resources/Credentials.png)
+2. Then, you need to get the credentials for your spotify account
 
-3. You can now run the script
+    1. Go to the dashboard in the [spotify developer page](https://developer.spotify.com/dashboard/)
+
+    2. Log in with your spotify account.
+
+    3. Create a new app by clicking "My New App". If you don't know yet for what purpose you want for your app, tick the "I don't know" option. Give it a title and a description and tick all the boxes in the next page.
+    ![creation of the app](resources/App%20creation.png)
+
+    4. On the left side you can find your "Client ID" and your "Client Secret". Sometimes the "spotipy" script requiers a redirect page. For that, go to "Edit Settings" and set "https://www.google.com/" (or any other generic and stable page) as your Redirect URI.
+    ![Credentials](resources/Credentials.png)
 
 
-# Introduction:
+3. Set up MySQL Database
+    ### Installation:
+    #### Linux:
+    
+    To install MySQL, open a terminal and type the following `sudo apt-get install mysql-server mysql-client` for ubuntu and devian.
 
- This project will atempt to give an analisis of songs from Spotify using a  library that implements the [Spotify API](https://developer.spotify.com/documentation/web-api/) into python called [Spotipy](https://github.com/plamere/spotipy). Using this information, we will try to build a playlist of the trends per country per day and then try to implement other features.
+    #### Windows:
 
+    Download the instaler from the page of [mysql](https://dev.mysql.com/downloads/installer/) and execute it. For more information, you can visit the [MySQL Windows installation guide](https://dev.mysql.com/doc/refman/8.0/en/windows-installation.html)
 
-# Implementation:
-The implementation can be found in the [spotify.py](https://github.com/theDeadIns/zombie/blob/master/spotify.py) file above
+    ### Setup:
 
- # Testing Results:
+    After the installation, you'll need to create a user. In the termial type `sudo su` for linux or comand line in administrator mode in windows, then, without leaving the mysql pompt type
 
- So far, we have managed to obtain as many as 20 songs per execution in json format however, we still need to determine the frecuency in witch we are going to be running the scrpit, given that the trends do not change that frecuently (we are still testing this).
+    ```bash
+    mysql_secure_instalation
+    ```
 
- # Resources:
+    This will begin the instalation and will ask for a password for root, after this, without leaving super user, enter to 
+    
+    ```sql
+    CREATE USER 'user'@'localhost' IDENTIFIED BY 'password';
+    ```
+    **Replace `user` and `password` with the actual values you are going to use**
+
+    Then, create the database with `CREATE DATABASE db_name;` replacing `db_name` with the name of the database
+
+    Now, to create the tables, you can copy the contents from `spotify_tracks_table.sql` or, outside of the mysql promt, in the terminal type: `mysql -u user -p db_name < spotify_tracks_table.sql`
+
+    NOTE: if you're copying from the file, be sure to type 
+    ```sql
+    ALTER DATABASE test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; 
+    ```
+    This is because, some of the values are not in ascii (like chinese, japanese, korean and thai characters) and will cause an issue with the data base
+
+    To finish the setup, you'll need to input your credentials in the dictioanry that is called config in the  `db_connection.py`, you can leave it there (not recomended) or you can use the method `write_config`. Other alternative, is to create a json file named config.json with the following data:
+    ```json
+    {"user": "user", "password": "password", "host": "127.0.0.1", "database": "db_name", "raise_on_warnings": True}
+    ```
+    Replace `user`, `password` and `db_name` with the ones intended
+    
+4. You can run the scripts now. This scrips need to be run in a particular order, first, run `collect_data_from_spotify.py` then `processing_and_graphs.py <int>` where `<int>` is an optional parameter that represents how many songs will be displayed in the graphs, it defaults to 10.  If done correctly, it should generate a file named `Graficas.html` that will contain the graphs.
+
+# Graphs
+
+These screenshots represent a part of the graphs that are generated. Due to the size of the second graph, we will only one example.
+
+![Graph1](resources/Grafica1.png)
+
+![Graph2](resources/Grafica2.png)
+
+![Graph3](resources/Grafica3.png)
+# Objective:
+
+This project will atempt to give an analisis of songs from Spotify using a  library that implements the [Spotify API](https://developer.spotify.com/documentation/web-api/) into python called [Spotipy](https://github.com/plamere/spotipy). 
+
+# Resources:
 ## Data stream:
 - Spotify
 ## Data processing:
@@ -50,3 +104,4 @@ The implementation can be found in the [spotify.py](https://github.com/theDeadIn
 ## Data storage:
 - json files
 - MySQL
+
