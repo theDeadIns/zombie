@@ -68,7 +68,7 @@ GNU General Public License version 3
 
     NOTE: if you're copying from the file, be sure to type 
     ```sql
-    ALTER DATABASE test CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; 
+    ALTER DATABASE db_name CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; 
     ```
     This is because, some of the values are not in ascii (like chinese, japanese, korean and thai characters) and will cause an issue with the data base
 
