@@ -82,7 +82,7 @@ GNU General Public License version 3
 
 # Graphs
 
-These screenshots represent a part of the graphs that are generated. Due to the size of the second graph, we will only one example.
+These screenshots represent a part of the graphs that are generated. Due to the size of the second graph, we will only show one example.
 
 ![Graph1](resources/Grafica1.png)
 
