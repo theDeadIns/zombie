@@ -123,7 +123,7 @@ if __name__ == "__main__":
             df = continue_loading(i,df)
     print(df)
     os.chdir("..")
-    # insert_into_database(df)
+    insert_into_database(df)
     if len(sys.argv) > 1:
         n = sys.argv[1]
 

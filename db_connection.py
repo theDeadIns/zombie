@@ -6,7 +6,7 @@ import os
 
 
 # config = {"user": "user", "password": "12345678", "host": "127.0.0.1", "database": "test", "raise_on_warnings": True}
-config = {"user": "usario", "password": "12345", "host": "127.0.0.1", "database": "test", "raise_on_warnings": True}
+config = {"user": "usuario", "password": "12345", "host": "127.0.0.1", "database": "spotipy", "raise_on_warnings": True}
 def write_config(config):
   with open("config.json", "w+") as json_wirte:
     json.dumps(config, json_wirte)
@@ -31,6 +31,7 @@ def insert_data(song):
         song_name = song[1]
         song[2] = str(song[2])
         song[2].replace("'", "")
+        song[2].replace("'", "")
         artist = song[2]
         playlist = song[3]
         playlist_id = song[4]
@@ -49,9 +50,9 @@ def insert_data(song):
          print("Query OK")
         except Exception as e:
           print(str(e))
-          f = open("errlog.txt", "a+")
-          f.write(query, "\n")
-          f.write(str(e), "\n")
+          with open("errlog.txt", "a+") as f:
+            f.write(f"{query} \n")
+            f.write(str(e))
 
     except mysql.connector.Error as err:
       if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
