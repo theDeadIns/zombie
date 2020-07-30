@@ -66,7 +66,7 @@ GNU General Public License version 3
 
     Now, to create the tables, you can copy the contents from `spotify_tracks_table.sql` or, outside of the mysql promt, in the terminal type: `mysql -u user -p db_name < spotify_tracks_table.sql`
 
-    NOTE: if you're copying from the file, be sure to type 
+    NOTE: Be sure to cahnge `db_name` for the name of your database in the sql file. If you're copying from the file, be sure to type 
     ```sql
     ALTER DATABASE db_name CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; 
     ```
