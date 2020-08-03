@@ -17,6 +17,10 @@ from bokeh.models import Button, Dropdown, DataTable, TableColumn, ColumnDataSou
 from bokeh.palettes import RdYlBu3
 from bokeh.embed import components
 
+from flask import Flask, render_template
+
+# app  = Flask(__name__)
+# @app.route('/')
 
 file = output_file("Graficas.html", title="Spotify Songs")
 
@@ -43,7 +47,9 @@ def make_graph_1(df, top_n):
     p.outline_line_color = None
     p.grid.grid_line_color = None
     p.hbar(y=top_n[0][::-1], height=0.9, right=top_n[1][::-1])
-
+    
+    p.xaxis.axis_label = "Times appeared in playlists"
+    p.yaxis.axis_label = "Song Name"
     return p
     
 def make_graph_2(df, top_n):
@@ -59,6 +65,9 @@ def make_graph_2(df, top_n):
         p = figure(x_range=countries, plot_width=1200, plot_height=400, title=f"{top_n[0][index]} positions", tooltips=TOOLTIPS)
         p.circle(countries, df.loc[song].track_position.values, size=10)
         p.xaxis.major_label_orientation = np.pi/2
+        
+        p.xaxis.axis_label = "Country"
+        p.yaxis.axis_label = "Position in country"
         graphs.append(p)
     
     return graphs
@@ -111,6 +120,9 @@ def insert_into_database(df):
         db.insert_data(song)
 
 
+def render(script, div):
+    return render_template("page.html")
+
 if __name__ == "__main__":    
     path = os.path.join("Countries/")
     os.chdir(path)
@@ -138,3 +150,7 @@ if __name__ == "__main__":
     tab3 = Panel(child=show_df(df), title="Data")
     tabs = Tabs(tabs=[tab1, tab2, tab3])
     show(tabs)
+
+    # script, div = components(Tabs(tabs=[tab1, tab2, tab3]))
+    # render(script, div)
+    # app.run()
