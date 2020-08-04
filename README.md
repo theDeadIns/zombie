@@ -7,22 +7,37 @@
 ## License:
 GNU General Public License version 3
 
+
+# Introduction
+
+This project will atempt to give an analisis of songs from Spotify using a  library that implements the [Spotify API](https://developer.spotify.com/documentation/web-api/) into python called [Spotipy](https://github.com/plamere/spotipy). The objective is to know which are the most listened songs in spotify by using the "TOP 50" playlist of every country that spotify generates.
+
+
 # Instructions
 1. First, you need to install the following libraries:
     * [Spoitpy library](https://github.com/plamere/spotipy)
 
+        An implementation of the spotify API into python.
+
         You can do this by simply running `pip install spotipy`
+
     * [Bokeh](https://docs.bokeh.org/en/latest/docs/installation.html)
         
+        A library made for data visualization with more tools and flexibility than matplotlib. We use it for generating the gaphs, it's interactivity and exporting them to html.
+
         Again, you can do it with `pip install bokeh`
 
     * [Pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html)
+
+        A library made for data processing, analysis and manipulation. We used it to process the data gathered from spotify to get the stats and the data for the graphs.
 
         Like the ones above, it can be installed with `pip install pandas`
 
     * [MySQL Connector](https://dev.mysql.com/doc/connector-python/en/connector-python-installation.html)
 
-    For all this libraries, we recommend to follow the instructions provided and to check the libraries you have installed. To do this, you can do it with `pip list` or `python -m pip list` 
+        As the name suggest, this library is a way to connect a MySQL database with python. We used it to automate the storing of data to the SQL database.
+
+    For all this libraries, we recommend to follow the instructions provided and to check the libraries you have installed. To do this, type  `pip list` or `python -m pip list` in the terminal.
 
 2. Then, you need to get the credentials for your spotify account
 
@@ -84,14 +99,14 @@ GNU General Public License version 3
 
 These screenshots represent a part of the graphs that are generated. Due to the size of the second graph, we will only show one example.
 
+## This graph represents the songs and the amount of times it has appeared in the playlist 
 ![Graph1](resources/Grafica1.png)
 
+## The second graph, represents the song positions in the countries playlist
 ![Graph2](resources/Grafica2.png)
 
+## This is the data qe used represeted in tables.
 ![Graph3](resources/Grafica3.png)
-# Objective:
-
-This project will atempt to give an analisis of songs from Spotify using a  library that implements the [Spotify API](https://developer.spotify.com/documentation/web-api/) into python called [Spotipy](https://github.com/plamere/spotipy). 
 
 # Resources:
 ## Data stream:
@@ -99,9 +114,10 @@ This project will atempt to give an analisis of songs from Spotify using a  libr
 ## Data processing:
 - Python
 - Pandas
+
+## Visualization:
 - Bokeh
 
 ## Data storage:
 - json files
 - MySQL
-
