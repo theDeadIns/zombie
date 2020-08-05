@@ -112,7 +112,7 @@ These screenshots represent a part of the graphs that are generated. Due to the 
 ## Data stream:
 - Spotify
 ## Data processing:
-- Python
+- Python 3 
 - Pandas
 
 ## Visualization:
