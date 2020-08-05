@@ -10,7 +10,7 @@ GNU General Public License version 3
 
 # Introduction
 
-This project will atempt to give an analisis of songs from Spotify using a  library that implements the [Spotify API](https://developer.spotify.com/documentation/web-api/) into python called [Spotipy](https://github.com/plamere/spotipy). The objective is to know which are the most listened songs in spotify by using the "TOP 50" playlist of every country that spotify generates.
+This project will atempt to give an analysis of songs from Spotify using a  library that implements the [Spotify API](https://developer.spotify.com/documentation/web-api/) into python called [Spotipy](https://github.com/plamere/spotipy). The objective of this analysis is to know which are the most listened songs in spotify by using the "TOP 50" playlist of every country that spotify generates.
 
 
 # Instructions
