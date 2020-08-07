@@ -1,4 +1,4 @@
-# Spotify Analisis
+# Spotify Analysis
 
 ## Authors
 - Eduardo Manuel Ceja Cruz lalitoceja@gmaill.com
