@@ -44,15 +44,15 @@ def insert_data(song):
         query = ("INSERT INTO tracks (song_id, song_name, artist, playlist, playlist_id, query_date, track_position)"+ f'VALUES ("{song_id}","{song_name}","{artist}","{playlist}","{playlist_id}","{query_date}","{track_position}");')
         # query2 = (f'INSERT INTO tracks (song_id, song_name, artist, playlist, playlist_id, query_date, track_position) VALUES ("2ACgvo2Kx4LgWqQ2amvM5C","Flasheaste Amor","["Agapornis", "Hernan y La Champions Liga", "Lauro"]","Argentina Top 50","spotify:playlist:37i9dQZEVXbMMy2roB9myp","2020-05-09",32);')
         try:
-         print (query)
+        #  print (query)
          cursor.execute(query)
          cnx.commit()
-         print("Query OK")
+        #  print("Query OK")
         except Exception as e:
           print(str(e))
           with open("errlog.txt", "a+") as f:
             f.write(f"{query} \n")
-            f.write(str(e))
+            f.write(f"{e} \n")
 
     except mysql.connector.Error as err:
       if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
@@ -63,6 +63,25 @@ def insert_data(song):
         print(err)
     else:
       cnx.close()
+
+def items_in_db():
+  try:
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor()
+    query = ("Select count(*) from tracks")
+    cursor.execute(query)
+    cnx.commit()
+
+  except mysql.connector.Error as err:
+    if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+      print("Something is wrong with your user name or password")
+    elif err.errno == errorcode.ER_BAD_DB_ERROR:
+      print("Database does not exist")
+    else:
+      print(err)
+  
+  else:
+    cnx.close() 
 
 # if __name__ == '__main__':
   

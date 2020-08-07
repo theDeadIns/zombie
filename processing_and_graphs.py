@@ -1,6 +1,6 @@
 import db_connection as db
-# import spotipy
-# from spotipy.oauth2 import SpotifyClientCredentials
+
+import io
 import os
 import sys
 import json
@@ -8,24 +8,21 @@ import datetime
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-# from bokeh.io import output_notebook, show
 
-from bokeh.io import show, output_file
+from bokeh.io import show, output_file, save
 from bokeh.plotting import figure, curdoc
 from bokeh.layouts import column
 from bokeh.models import Button, Dropdown, DataTable, TableColumn, ColumnDataSource, Tabs, Panel
 from bokeh.palettes import RdYlBu3
-from bokeh.embed import components
+from bokeh.embed import components, file_html
+from bokeh.resources import CDN, INLINE
 
-from flask import Flask, render_template
-
-# app  = Flask(__name__)
-# @app.route('/')
-
-file = output_file("Graficas.html", title="Spotify Songs")
+from jinja2 import Template
 
 
-def get_top_n(n):
+
+
+def get_top_n(n, df):
     index = df.groupby(df.index).count()["name"].sort_values(ascending=False).head(n).index.to_list()
     songs = df.loc[index].name.unique()
     values = df.groupby(df.index).count()["name"].sort_values(ascending=False).head(n).values
@@ -120,10 +117,7 @@ def insert_into_database(df):
         db.insert_data(song)
 
 
-def render(script, div):
-    return render_template("page.html")
-
-if __name__ == "__main__":    
+def main(n):    
     path = os.path.join("Countries/")
     os.chdir(path)
     df = load_and_create()
@@ -135,22 +129,29 @@ if __name__ == "__main__":
             df = continue_loading(i,df)
     print(df)
     os.chdir("..")
+
     insert_into_database(df)
-    if len(sys.argv) > 1:
-        n = sys.argv[1]
 
     try:
         n = int(n)
     except Exception as e:
-        print (e)
+        print (f"{e} setting it to default value (10)")
         n = 10
         
-    tab1 = Panel(child=make_graph_1(df, get_top_n(n)), title="Graphs")
-    tab2 = Panel(child=column(make_graph_2(df,get_top_n(n))), title="Song Positions")
+    tab1 = Panel(child=make_graph_1(df, get_top_n(n, df)), title="Graphs")
+    tab2 = Panel(child=column(make_graph_2(df,get_top_n(n, df))), title="Song Positions")
     tab3 = Panel(child=show_df(df), title="Data")
-    tabs = Tabs(tabs=[tab1, tab2, tab3])
-    show(tabs)
+    tabs = Tabs(tabs=[tab2, tab1, tab3])
+    
+    script, div = components(tabs)
+    
+    template = Template(open("templates/index.html").read())
+    
+    resources = INLINE.render()
 
-    # script, div = components(Tabs(tabs=[tab1, tab2, tab3]))
-    # render(script, div)
-    # app.run()
+    filename = "Graficas.html"
+    html = template.render(resources=resources, script=script, div=div)
+
+    with  io.open(filename, mode="w+", encoding="utf-8") as f:
+        f.write(html)
+
