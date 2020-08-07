@@ -79,7 +79,11 @@ This project will atempt to give an analysis of songs from Spotify using a  libr
 
     Then, create the database with `CREATE DATABASE db_name;` replacing `db_name` with the name of the database
 
-    Now, to create the tables, you can copy the contents from `spotify_tracks_table.sql` or, outside of the mysql promt, in the terminal type: `mysql -u user -p db_name < spotify_tracks_table.sql`
+    Now, to create the tables, you can copy the contents from `spotify_tracks_table.sql` or, outside of the mysql promt, in the terminal type: 
+    
+   ```
+   mysql -u user -p db_name < spotify_tracks_table.sql
+   ```
 
     NOTE: Be sure to cahnge `db_name` for the name of your database in the sql file. If you're copying from the file, be sure to type 
     ```sql
