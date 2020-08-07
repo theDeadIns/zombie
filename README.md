@@ -77,7 +77,11 @@ This project will atempt to give an analysis of songs from Spotify using a  libr
     ```
     **Replace `user` and `password` with the actual values you are going to use**
 
-    Then, create the database with `CREATE DATABASE db_name;` replacing `db_name` with the name of the database
+    Then, create the database with 
+    ```sql
+    CREATE DATABASE db_name;
+    ```
+    replacing `db_name` with the name of the database
 
     Now, to create the tables, you can copy the contents from `spotify_tracks_table.sql` or, outside of the mysql promt, in the terminal type: 
     
