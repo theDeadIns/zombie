@@ -23,9 +23,13 @@ This project will atempt to give an analysis of songs from Spotify using a  libr
 
     * [Bokeh](https://docs.bokeh.org/en/latest/docs/installation.html)
         
-        A library made for data visualization with more tools and flexibility than matplotlib. We use it for generating the gaphs, it's interactivity and exporting them to html.
+        A library made for data visualization with more tools and flexibility than matplotlib. We use it for generating the gaphs, it's interactivity and teh including them into the HTML.
 
         Again, you can do it with `pip install bokeh`
+
+    * [Jinja2](https://pypi.org/project/Jinja2/)
+
+        A way to put funcitonality into a HTML template, and we used it just for that. The web page that is generated uses this library to replace the `{{ div }}` and `{{ script }}` from the file called template.html to the actual content
 
     * [Pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html)
 
@@ -56,7 +60,11 @@ This project will atempt to give an analysis of songs from Spotify using a  libr
     ### Installation:
     #### Linux:
     
-    To install MySQL, open a terminal and type the following `sudo apt-get install mysql-server mysql-client` for ubuntu and devian.
+    To install MySQL, open a terminal and type the following:
+    ```
+    sudo apt-get install mysql-server mysql-client
+    ``` 
+    for ubuntu and devian.
 
     #### Windows:
 
@@ -101,9 +109,9 @@ This project will atempt to give an analysis of songs from Spotify using a  libr
     ```
     Replace `user`, `password` and `db_name` with the ones intended
     
-4. You can run the scripts now. This scrips need to be run in a particular order, first, run `collect_data_from_spotify.py` then `processing_and_graphs.py <int>` where `<int>` is an optional parameter that represents how many songs will be displayed in the graphs, it defaults to 10.  If done correctly, it should generate a file named `Graficas.html` that will contain the graphs.
+4. You can run the scripts now. To do this, we provided two options, you can either run `main.py <int>` where `<int>` is the number of elements that will contain the graphs, you can leave it empty,  or run the srcipt individualy, if you wish to not request new songs. To run them separately they you need to do it in a particular order, first, run `collect_data_from_spotify.py`, this is only if you need to collect new data from spotify, and then, type `python -c "import processing_and_graphs; processing_and_graphs.main(<int>)` where `<int>` is an optional parameter that represents how many songs will be displayed in the graphs, it defaults to 10.  If done correctly, it should generate a file named `Graficas.html` that will contain the webpage.
 
-# Graphs
+# Graphs:
 
 These screenshots represent a part of the graphs that are generated. Due to the size of the second graph, we will only show one example.
 
@@ -116,6 +124,14 @@ These screenshots represent a part of the graphs that are generated. Due to the 
 ## This is the data qe used represeted in tables.
 ![Graph3](resources/Grafica3.png)
 
+# Webpage:
+
+
+
+# Conlcusions:
+
+We noticed that, even though they are the popular songs, in the second graphs you can observe how is lossing popularity, meaning that it'll probably not be ther for much longer of if it has mantained it's popularity.
+
 # Resources:
 ## Data stream:
 - Spotify
@@ -125,7 +141,8 @@ These screenshots represent a part of the graphs that are generated. Due to the 
 
 ## Visualization:
 - Bokeh
-
+- jinja2
+- HTML and CSS
 ## Data storage:
 - json files
 - MySQL
