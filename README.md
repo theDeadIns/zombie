@@ -43,6 +43,12 @@ This project will atempt to give an analysis of songs from Spotify using a  libr
 
     For all this libraries, we recommend to follow the instructions provided and to check the libraries you have installed. To do this, type  `pip list` or `python -m pip list` in the terminal.
 
+    **Note:** If you have an anaconda/conda enviroment, most of this libraries are already included, if you're not sure about which ones are installed, you can check it with
+    ```
+    conda list | grep <packet_name>
+    ```
+    Also, anaconda will try to avoid conflicts between the packages and will try to install missing packages too.
+
 2. Then, you need to get the credentials for your spotify account
 
     1. Go to the dashboard in the [spotify developer page](https://developer.spotify.com/dashboard/)
@@ -103,12 +109,18 @@ This project will atempt to give an analysis of songs from Spotify using a  libr
     ```
     This is because, some of the values are not in ascii (like chinese, japanese, korean and thai characters) and will cause an issue with the data base
 
-    To finish the setup, you'll need to input your credentials in the dictioanry that is called config in the  `db_connection.py`, you can leave it there (not recomended) or you can use the method `write_config`. Other alternative, is to create a json file named config.json with the following data:
+    To finish the setup, you'll need to input your credentials to a json file with the following format:
     ```json
     {"user": "user", "password": "password", "host": "127.0.0.1", "database": "db_name", "raise_on_warnings": True}
     ```
     Replace `user`, `password` and `db_name` with the ones intended
-    
+
+    And replace "db_config.json" with the name of you file in the script whre the code is:
+    ```py
+    config = load_config("db_config.json")
+    ```
+
+
 4. You can run the scripts now. To do this, we provided two options, you can either run `main.py <int>` where `<int>` is the number of elements that will contain the graphs, you can leave it empty,  or run the srcipt individualy, if you wish to not request new songs. To run them separately they you need to do it in a particular order, first, run `collect_data_from_spotify.py`, this is only if you need to collect new data from spotify, and then, type `python -c "import processing_and_graphs; processing_and_graphs.main(<int>)` where `<int>` is an optional parameter that represents how many songs will be displayed in the graphs, it defaults to 10.  If done correctly, it should generate a file named `Graficas.html` that will contain the webpage.
 
 # Graphs:
