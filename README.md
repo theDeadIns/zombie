@@ -137,7 +137,9 @@ These screenshots represent a part of the graphs that are generated. Due to the 
 ![Graph3](resources/Grafica3.png)
 
 # Webpage:
+The webpage looks like this:
 
+![Webpage1](resources/webpage1.png)
 
 
 # Conlcusions:
