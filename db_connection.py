@@ -6,14 +6,15 @@ import os
 
 
 # config = {"user": "user", "password": "12345678", "host": "127.0.0.1", "database": "test", "raise_on_warnings": True}
-config = {"user": "usuario", "password": "12345", "host": "127.0.0.1", "database": "spotipy", "raise_on_warnings": True}
+config = load_config("db_config.json")
+
 def write_config(config):
   with open("config.json", "w+") as json_wirte:
     json.dumps(config, json_wirte)
 
 
-def load_config():
-  with open("config.json") as json_file:
+def load_config(filename):
+  with open(filename) as json_file:
     config = json.loads(json_file)
   
   return config
@@ -51,7 +52,7 @@ def insert_data(song):
         except Exception as e:
           print(str(e))
           with open("errlog.txt", "a+") as f:
-            f.write(f"{query} \n")
+            f.write(f"{datetime.datetime.now()} {query} \n")
             f.write(f"{e} \n")
 
     except mysql.connector.Error as err:
