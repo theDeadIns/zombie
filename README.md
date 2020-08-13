@@ -14,28 +14,48 @@ This project will atempt to give an analysis of songs from Spotify using a  libr
 
 
 # Instructions
-1. First, you need to install the following libraries:
+1. First, you need to download the proyect
+    ```
+    git clone https://github.com/theDeadIns/zombie 
+    ```
+
+ 2. install the following libraries:
     * [Spoitpy library](https://github.com/plamere/spotipy)
 
         An implementation of the spotify API into python.
 
-        You can do this by simply running `pip install spotipy`
+        You can do this by simply running 
+        ```
+        pip install spotipy
+        ```
 
     * [Bokeh](https://docs.bokeh.org/en/latest/docs/installation.html)
         
         A library made for data visualization with more tools and flexibility than matplotlib. We use it for generating the gaphs, it's interactivity and teh including them into the HTML.
 
-        Again, you can do it with `pip install bokeh`
+        Again, you can do it with 
+        ```
+        pip install bokeh
+        ```
 
     * [Jinja2](https://pypi.org/project/Jinja2/)
 
         A way to put funcitonality into a HTML template, and we used it just for that. The web page that is generated uses this library to replace the `{{ div }}` and `{{ script }}` from the file called template.html to the actual content
 
+        To install it, type
+        ```
+        pip install Jinja2
+        ```
+
     * [Pandas](https://pandas.pydata.org/pandas-docs/stable/getting_started/install.html)
 
         A library made for data processing, analysis and manipulation. We used it to process the data gathered from spotify to get the stats and the data for the graphs.
 
-        Like the ones above, it can be installed with `pip install pandas`
+        Like the ones above, it can be installed with 
+        ```
+        pip install pandas
+        ```
+        **Be sure to use ver 1.0.5 or above**
 
     * [MySQL Connector](https://dev.mysql.com/doc/connector-python/en/connector-python-installation.html)
 
@@ -49,7 +69,7 @@ This project will atempt to give an analysis of songs from Spotify using a  libr
     ```
     Also, anaconda will try to avoid conflicts between the packages and will try to install missing packages too.
 
-2. Then, you need to get the credentials for your spotify account
+3. Then, you need to get the credentials for your spotify account
 
     1. Go to the dashboard in the [spotify developer page](https://developer.spotify.com/dashboard/)
 
@@ -62,7 +82,7 @@ This project will atempt to give an analysis of songs from Spotify using a  libr
     ![Credentials](resources/Credentials.png)
 
 
-3. Set up MySQL Database
+4. Set up MySQL Database
     ### Installation:
     #### Linux:
     
@@ -120,8 +140,26 @@ This project will atempt to give an analysis of songs from Spotify using a  libr
     config = load_config("db_config.json")
     ```
 
+# Running the proyect
 
-4. You can run the scripts now. To do this, we provided two options, you can either run `main.py <int>` where `<int>` is the number of elements that will contain the graphs, you can leave it empty,  or run the srcipt individualy, if you wish to not request new songs. To run them separately they you need to do it in a particular order, first, run `collect_data_from_spotify.py`, this is only if you need to collect new data from spotify, and then, type `python -c "import processing_and_graphs; processing_and_graphs.main(<int>)` where `<int>` is an optional parameter that represents how many songs will be displayed in the graphs, it defaults to 10.  If done correctly, it should generate a file named `Graficas.html` that will contain the webpage.
+To run the proyect use 
+```
+python3 main.py <int>
+```
+
+ where `<int>` is the number of elements that will contain the graphs, you can leave it empty,  or run the srcipt individualy, if you wish to not request new songs. 
+
+## Run separately 
+
+To run them separately they you need to do it in a particular order, first, run 
+ ```
+python3 collect_data_from_spotify.py
+``` 
+this is only if you need to collect new data from spotify, and then, type
+```
+python3 -c "import processing_and_graphs; processing_and_graphs.main(<int>)
+``` 
+where `<int>` is an optional parameter that represents how many songs will be displayed in the graphs, it defaults to 10.  If done correctly, it should generate a file named `Graficas.html` that will contain the webpage.
 
 # Graphs:
 
@@ -142,7 +180,7 @@ The webpage looks like this:
 ![Webpage1](resources/webpage1.png)
 
 
-# Conlcusions:
+# Conclusions:
 
 We noticed that, even though they are the popular songs, in the second graphs you can observe how is lossing popularity, meaning that it'll probably not be ther for much longer of if it has mantained it's popularity.
 
