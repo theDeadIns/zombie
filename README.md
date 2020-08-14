@@ -90,7 +90,7 @@ This project will atempt to give an analysis of songs from Spotify using a  libr
     ```
     sudo apt-get install mysql-server mysql-client
     ``` 
-    for ubuntu and devian.
+    for ubuntu and debian.
 
     #### Windows:
 
@@ -147,7 +147,7 @@ To run the proyect use
 python3 main.py <int>
 ```
 
- where `<int>` is the number of elements that will contain the graphs, you can leave it empty,  or run the srcipt individualy, if you wish to not request new songs. 
+ where `<int>` is the number of elements that will contain the graphs, you can leave it empty.  If you want to not request songs, run the **run the scripts separately**. See how below
 
 ## Run separately 
 
