@@ -8,36 +8,33 @@ import os
 # config = {"user": "user", "password": "12345678", "host": "127.0.0.1", "database": "test", "raise_on_warnings": True}
 with open("db_config.json") as json_file:
   config = json.loads(json_file)
-  
+
 # this script recieves data from the script taht makes a bokeh plot with a pandas dataframe
 def insert_data(song): 
   #song is made ofthe song id and the elements that are in the dataframe bc i thought that it would be a waste to read two times the same thing so we only need to process it one
     try:
         cnx = mysql.connector.connect(**config)
-        # values = [i for i in song]
-        
-        song_id = song[0]
-        song[1] = song[1].replace('"', "")
-        song_name = song[1]
-        song[2] = str(song[2])
-        song[2].replace("'", "")
-        song[2].replace("'", "")
-        artist = song[2]
-        playlist = song[3]
-        playlist_id = song[4]
-        query_date = song[5]
-        track_position = song[6]
+        # values = [i for i in song]        
+        # song_id = song[0]
+        # song[1] = song[1].replace('"', "")
+        # song_name = song[1]
+        # song[2] = str(song[2])
+        # song[2].replace("'", "")
+        # song[2].replace("'", "")
+        # artist = song[2]
+        # playlist = song[3]
+        # playlist_id = song[4]
+        # query_date = song[5]
+        # track_position = song[6]
 
         cursor = cnx.cursor()
-        
-        # print(artist)
-        query = ("INSERT INTO tracks (song_id, song_name, artist, playlist, playlist_id, query_date, track_position)"+ f'VALUES ("{song_id}","{song_name}","{artist}","{playlist}","{playlist_id}","{query_date}","{track_position}");')
-        # query2 = (f'INSERT INTO tracks (song_id, song_name, artist, playlist, playlist_id, query_date, track_position) VALUES ("2ACgvo2Kx4LgWqQ2amvM5C","Flasheaste Amor","["Agapornis", "Hernan y La Champions Liga", "Lauro"]","Argentina Top 50","spotify:playlist:37i9dQZEVXbMMy2roB9myp","2020-05-09",32);')
+  
+        query = ("INSERT INTO tracks (song_id, song_name, artist, playlist, playlist_id, query_date, track_position) VALUES (%s, %s, %s, %s, %s, %s, %s);" )
+
+        data_query = (song[0], song[1], song[2], song[3], song[4], song[5], song[6])
         try:
-        #  print (query)
-         cursor.execute(query)
+         cursor.execute(query, data_query)
          cnx.commit()
-        #  print("Query OK")
         except Exception as e:
           print(str(e))
           with open("errlog.txt", "a+") as f:
