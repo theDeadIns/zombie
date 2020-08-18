@@ -6,20 +6,9 @@ import os
 
 
 # config = {"user": "user", "password": "12345678", "host": "127.0.0.1", "database": "test", "raise_on_warnings": True}
-config = load_config("db_config.json")
-
-def write_config(config):
-  with open("config.json", "w+") as json_wirte:
-    json.dumps(config, json_wirte)
-
-
-def load_config(filename):
-  with open(filename) as json_file:
-    config = json.loads(json_file)
+with open("db_config.json") as json_file:
+  config = json.loads(json_file)
   
-  return config
-
-
 # this script recieves data from the script taht makes a bokeh plot with a pandas dataframe
 def insert_data(song): 
   #song is made ofthe song id and the elements that are in the dataframe bc i thought that it would be a waste to read two times the same thing so we only need to process it one
